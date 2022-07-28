@@ -1,13 +1,13 @@
 {
-  "title": "WhatsApp: Activate Your Development Sandbox",
-  "description": "Get your Twilio account set up to <strong>send and receive WhatsApp messages!</strong>",
+  "title": "WhatsApp: Start a messaging session",
+  "description": "<strong>Start a messaging session</strong> by sending a message to your application.",
   "show_ide": false,
   "validation_fields": [
     {
-      "name": "whatsappJoinCode",
+      "name": "secretCode",
       "type": "text",
-      "placeholder": "Don't forget the punctuation...",
-      "label": "We'll check to see if you've successfully configured your WhatsApp sandbox. Also, let's see if you noticed one important detail - to use the WhatsApp Sandbox what join code must you use on this account?"
+      "placeholder": "Enter the code you received via WhatsApp",
+      "label": "Switch to the prepared browser tab and scan the QR code to start a session"
     }
   ],
   "rewards": {

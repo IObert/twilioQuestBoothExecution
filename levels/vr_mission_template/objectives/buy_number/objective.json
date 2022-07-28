@@ -5,7 +5,7 @@
     {
       "name": "twilioNumber",
       "type": "text",
-      "placeholder": "+16518675309",
+      "placeholder": "+49 1573 5987400",
       "label": "Enter your Twilio phone number, in E.164 format:"
     }
   ],

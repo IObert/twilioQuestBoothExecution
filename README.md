@@ -38,8 +38,7 @@ Once you have enabled extensions, you should see a listing of automatically-inst
 ### Personalisation for Your Twilio Account
 There are a few bits of code that you need to modify so that the instructions are consistent with your account.
 
-1. Ensure that the TwilioQuest game has your demo account sid and auth token. You can do this by playing the "Twilio API Setup" training mission from the Fog Owl.
-2. Change the WhatsApp Join Code in `./levels/vr_mission_template/join_sandbox/description.md` to the code from [your console](https://www.twilio.com/console/sms/WhatsApp/sandbox).
+Ensure that the TwilioQuest game has your demo account sid and auth token. You can do this by playing the "Twilio API Setup" training mission from the Fog Owl.
 
 ## At the Booth
 Here are instructions that should help guide you through the prep to run TQ at the booth.
@@ -47,11 +46,23 @@ Here are instructions that should help guide you through the prep to run TQ at t
 ### Prep
 To run this custom extension at the booth you will need to have 2 or 3 windows open:
 - Window running TwilioQuest, with the Booth Mission, already loaded
-- Use the demo user to log into the Twilio Console and open the [Active Numbers](https://www.twilio.com/console/phone-numbers/) (and buy a number) or the [Buy Numbers](https://www.twilio.com/console/phone-numbers/search) page. 
-  > It's helpful to prepare address/identity requirements ahead of time or have a number already owned in countries with a difficult process for acquiring numbers.
-- Open the [Twiml Bins](https://www.twilio.com/console/runtime/twiml-bins) page with a prepared TwiML bin ready.
+- Use the demo user to log into the Twilio Console and open the [Active Numbers](https://www.twilio.com/console/phone-numbers/) (and buy a number) page. 
+- Buy a number and enable it for WhatsApp
+- Create a messaging service for incoming WhatsApp messages and connect it to a new TwiMl bin with this configuration.
+  ```XML
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Response>
+    <Message>
+      Yay, you just activated a WhatsApp session! The secret password is "TwilioQuest".
+
+      We only use your phone number for this interaction with the TwilioQuest game and redact all the messages and phone numbers afterwards. 
+    </Message>
+  </Response>
+  ```
+- Open a new tab that points to <https://create.wa.link/> and prepare a QR code that initiates a messaging session.
+- Open the [Twiml Bins](https://www.twilio.com/console/runtime/twiml-bins) page with another prepared TwiML bin ready.
 - **Optional** Install a  browser extension like [SessionBuddy](https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko?hl=en) to save the open tabs in case you need to restore them between players.
-- **Optional if you pre-purchased a number** Add TwiML responses for incoming calls and messages in case the players want to interact with the demo number. Here are two examples:
+- **Optional** Add TwiML responses for incoming calls and messages in case the players want to interact with the demo number. Here are two examples:
   ```XML
   <Response>
     <Say language="de-DE">Twilio sagt "Hallo von der {eventName}"!</Say>
@@ -63,9 +74,7 @@ To run this custom extension at the booth you will need to have 2 or 3 windows o
     <Message>
         This is the Twilio bot @ {eventName}. Feel free to stop by our booth if you want to learn more.
     </Message>
-</Response>
-
-
+  </Response>  
   ```
 
 ### Playthrough
@@ -76,7 +85,7 @@ To run this custom extension at the booth you will need to have 2 or 3 windows o
 3. After this, they will have three choices;
     * SMS Message: Turn Right; They will have to add a `to` and `body` parameter and send a message to themselves. 
     * Phone Call: Turn Left; They will have to add a `to` and `url`. For the URL direct them to the TwiML bin page, where they can edit the TwiML Bin to Say what they would like.
-    * WhatsApp: Head straight up; They will have to join the sandbox associated with whatever account you are using. They can then send a WhatsApp message to themselves on the second mission.
+    * WhatsApp: Head straight up; They will have to initiate a WhatsApp session before they can then send a WhatsApp message to themselves in the next room.
 
 4. Once they have completed the mission, they can open the chest. In the future, this will increment a counter to keep a count of the missions completed. To reset the game, simply walk through the exit at the top of the screen. This will reload the mission with all the code, and the barriers reset.
 

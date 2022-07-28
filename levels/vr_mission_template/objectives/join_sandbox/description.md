@@ -1,7 +1,7 @@
-# Sandbox, stock, and barrel
+# Start a WhatsApp messaging session
 
-The Twilio Sandbox for WhatsApp lets you start sending with WhatsApp right away, instead of waiting for WhatsApp to approve your Twilio number.
+WhatsApp messages are subject to specific rules and restrictions that do not apply to standard Twilio Programmable SMS and MMS messages. Understanding the concept of “sessions” is essential to designing your messaging flows.
 
-Join the Twilio Sandbox by sending a WhatsApp message to `+1 415 523 8886` with code `join seat-interest`. 
+A messaging **session** starts when a user sends your application a message and lasts 24 hours from the most recently received message. A session includes all incoming messages or outgoing replies to these messages within 24 hours. Session messages do not need to follow a template and can include media attachments.
 
- After you finish, answer the question to the right and hit the HACK button. We'll check your most recent messages to verify that you completed the onboarding flow for the Sandbox and are ready to continue.
+Switch to the browser and scan the QR of the <create.wa.link> tab with your phone to start a WhatsApp session. You receive the secret password right after you send the message. Use this password to answer the question to the right and hit the HACK button.
